@@ -14,13 +14,14 @@ else
     var db = mongoose.connect('mongodb://localhost:27017/fplAPI', { useNewUrlParser: true });
 
 /* Parser */
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 /* Models */
 var playerModel = require('./Models/playerModel');
 var teamModel = require('./Models/teamModel');
 var gameweekModel = require('./Models/gameweekModel');
+var userModel = require('./Models/userModel');
 
 /* Routes */
 app.get('/', (req, res) => {
@@ -35,10 +36,12 @@ app.get('/', (req, res) => {
 var playerRouter = require('./Routes/playerRoutes')(playerModel);
 var teamRouter = require('./Routes/teamRoutes')(teamModel);
 var gameweekRouter = require('./Routes/gameweekRoutes')(gameweekModel);
+var userRouter = require('./Routes/userRoutes')(userModel);
 
 app.use('/api/players', playerRouter);
 app.use('/api/teams', teamRouter);
 app.use('/api/gameweeks', gameweekRouter);
+app.use('/api/users', userRouter);
 
 /* Listeners */
 app.listen(port, () => {
