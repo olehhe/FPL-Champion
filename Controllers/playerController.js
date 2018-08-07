@@ -26,8 +26,6 @@ var playerController = (Player) => {
     };
 
     var getWithId = (req, res) => {
-        var query = { };
-
         res.json(req.player);
     };
 

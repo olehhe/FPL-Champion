@@ -25,15 +25,13 @@ var teamController = (Team) => {
         });
     };
 
-    var getWithId = (req, res) => {
-        var query = { };
-
+    var getWithTeamCode = (req, res) => {
         res.json(req.team);
     };
 
     return {
         get: get,
-        getWithId: getWithId
+        getWithTeamCode: getWithTeamCode
     }
 
 };

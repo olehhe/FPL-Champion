@@ -15,7 +15,7 @@ var gameweekModel = new Schema({
     highest_score: { type: Number },
     is_previous: { type: Boolean },
     is_current: { type: Boolean },
-    is_next: { type: Boolean }
+    is_next: { type: Boolean },
 });
 
 module.exports = mongoose.model('gameweek', gameweekModel);

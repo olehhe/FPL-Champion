@@ -33,7 +33,12 @@ app.get('/', (req, res) => {
 });
 
 var playerRouter = require('./Routes/playerRoutes')(playerModel);
+var teamRouter = require('./Routes/teamRoutes')(teamModel);
+var gameweekRouter = require('./Routes/gameweekRoutes')(gameweekModel);
+
 app.use('/api/players', playerRouter);
+app.use('/api/teams', teamRouter);
+app.use('/api/gameweeks', gameweekRouter);
 
 /* Listeners */
 app.listen(port, () => {
