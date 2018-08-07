@@ -3,7 +3,7 @@ var playerController = (Player) => {
     var _allowedQueryParams = [
         'first_name',
         'last_name',
-        'team'
+        'team_code'
     ]
 
     var get = (req, res) => {

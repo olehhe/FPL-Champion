@@ -1,16 +1,16 @@
 var teamController = (Team) => {
 
     var _allowedQueryParams = [
-        'first_name',
-        'last_name',
-        'team'
+        'name',
+        'short_name'
     ]
 
     var get = (req, res) => {
         var query = { };
         _allowedQueryParams.forEach((p) => {
-            if (req.query[p])
-                query[p] = req.query[p];
+            if (req.query[p]) {
+                query[p] = new RegExp(req.query[p], 'i');
+            }
         });
 
         Team.find(query, (err, teams) => {
