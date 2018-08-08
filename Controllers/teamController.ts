@@ -1,11 +1,11 @@
 const teamController = (Team) => {
 
-    var _allowedQueryParams = [
+    const _allowedQueryParams = [
         'name',
         'short_name'
     ]
 
-    var get = (req, res) => {
+    const get = (req, res) => {
         var query = { };
         _allowedQueryParams.forEach((p) => {
             if (req.query[p]) {
@@ -25,7 +25,7 @@ const teamController = (Team) => {
         });
     };
 
-    var getWithTeamCode = (req, res) => {
+    const getWithTeamCode = (req, res) => {
         res.json(req.team);
     };
 

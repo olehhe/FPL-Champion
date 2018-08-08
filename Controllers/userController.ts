@@ -1,6 +1,6 @@
 const userController = (User) => {
 
-    var get = (req, res) => {
+    const get = (req, res) => {
         var query = { };
 
         User.find(query, (err, users) => {
@@ -15,7 +15,7 @@ const userController = (User) => {
         });
     };
 
-    var post = (req, res) => {
+    const post = (req, res) => {
         var user = new User(req.body);
         if (!req.body.name || !req.body.email) {
             res.status(400);
@@ -28,11 +28,11 @@ const userController = (User) => {
         }
     };
 
-    var getWithId = (req, res) => {
+    const getWithId = (req, res) => {
         res.json(req.user);
     };
 
-    var putWithId = (req, res) => {
+    const putWithId = (req, res) => {
         req.user.name = req.body.name;
         req.user.email = req.body.email;
 
@@ -47,7 +47,7 @@ const userController = (User) => {
         });
     };
 
-    var patchWithId = (req, res) => {
+    const patchWithId = (req, res) => {
         if (req.body._id)
             delete req.body._id;
 
@@ -66,7 +66,7 @@ const userController = (User) => {
         });
     };
 
-    var deleteWithId = (req, res) => {
+    const deleteWithId = (req, res) => {
         req.user.remove((err) => {
             if (err) {
                 res.status(500);
