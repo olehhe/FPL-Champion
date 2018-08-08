@@ -3,19 +3,39 @@ var nodemon = require('gulp-nodemon');
 var gulpMocha = require('gulp-mocha');
 var env = require('gulp-env');
 var supertest = require('supertest');
+var ts = require('gulp-typescript');
 
-gulp.task('default', () => {
+// pull in the project Typescript config
+var tsProject = ts.createProject('tsc.config.json');
+gulp.task('typescripts', () =>
+{
+    var tsResult = tsProject.src()
+        .pipe(tsProject());
+        return tsResult.js.pipe(
+            gulp.dest(function(file) {
+                return file.base; 
+            })
+        );
+});
+
+const ignoreTsGeneratedJsFiles = [
+    'Controllers/**.js',
+];
+
+gulp.task('default',['typescripts'], () => {
     nodemon({
         script: 'app.js',
-        ext: 'js',
+        ext: 'js ts',
+        verbose: true,
         env: {
             PORT: 9000
         },
         ignore: [
-            './node_modules/**'
+            './node_modules/**',
+            ignoreTsGeneratedJsFiles
         ]
     })
-    .on('restart', () => {
+    .on('restart',['typescripts'], () => {
         console.log('Restarting');
     });
 });

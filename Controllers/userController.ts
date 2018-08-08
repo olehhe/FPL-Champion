@@ -1,7 +1,8 @@
-"use strict";
 const userController = (User) => {
+
     var get = (req, res) => {
-        var query = {};
+        var query = { };
+
         User.find(query, (err, users) => {
             if (err) {
                 res.status(500);
@@ -13,6 +14,7 @@ const userController = (User) => {
             }
         });
     };
+
     var post = (req, res) => {
         var user = new User(req.body);
         if (!req.body.name || !req.body.email) {
@@ -25,12 +27,15 @@ const userController = (User) => {
             res.send(user);
         }
     };
+
     var getWithId = (req, res) => {
         res.json(req.user);
     };
+
     var putWithId = (req, res) => {
         req.user.name = req.body.name;
         req.user.email = req.body.email;
+
         req.user.save((err) => {
             if (err) {
                 res.status(500);
@@ -41,11 +46,14 @@ const userController = (User) => {
             }
         });
     };
+
     var patchWithId = (req, res) => {
         if (req.body._id)
             delete req.body._id;
+
         for (var p in req.body)
             req.user[p] = req.body[p];
+
         req.user.save((err) => {
             if (err) {
                 res.status(500);
@@ -56,6 +64,7 @@ const userController = (User) => {
             }
         });
     };
+
     var deleteWithId = (req, res) => {
         req.user.remove((err) => {
             if (err) {
@@ -68,6 +77,7 @@ const userController = (User) => {
             }
         });
     };
+
     return {
         get: get,
         post: post,
@@ -75,6 +85,7 @@ const userController = (User) => {
         putWithId: putWithId,
         patchWithId: patchWithId,
         deleteWithId: deleteWithId
-    };
+    }
 };
-module.exports = userController;
+
+export = userController;

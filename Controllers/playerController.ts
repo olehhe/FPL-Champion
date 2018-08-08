@@ -1,16 +1,18 @@
-"use strict";
 const playerController = (Player) => {
+
     var _allowedQueryParams = [
         'first_name',
         'last_name',
         'team_code'
-    ];
+    ]
+
     var get = (req, res) => {
-        var query = {};
+        var query = { };
         _allowedQueryParams.forEach((p) => {
             if (req.query[p])
                 query[p] = req.query[p];
         });
+
         Player.find(query, (err, players) => {
             if (err) {
                 res.status(500);
@@ -22,12 +24,16 @@ const playerController = (Player) => {
             }
         });
     };
+
     var getWithId = (req, res) => {
         res.json(req.player);
     };
+
     return {
         get: get,
         getWithId: getWithId
-    };
+    }
+
 };
-module.exports = playerController;
+
+export = playerController;
