@@ -1,7 +1,7 @@
 const userController = (User) => {
 
     const get = (req, res) => {
-        var query = { };
+        const query = { };
 
         User.find(query, (err, users) => {
             if (err) {
@@ -16,7 +16,7 @@ const userController = (User) => {
     };
 
     const post = (req, res) => {
-        var user = new User(req.body);
+        const user = new User(req.body);
         if (!req.body.name || !req.body.email) {
             res.status(400);
             res.send('Name and Email is required');

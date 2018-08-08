@@ -6,7 +6,7 @@ const teamController = (Team) => {
     ]
 
     const get = (req, res) => {
-        var query = { };
+        let query = { };
         _allowedQueryParams.forEach((p) => {
             if (req.query[p]) {
                 query[p] = new RegExp(req.query[p], 'i');
