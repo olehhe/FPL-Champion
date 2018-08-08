@@ -60,6 +60,7 @@ const userController = (User) => {
                 res.send(err);
             }
             else {
+                res.status(200);
                 res.json(req.user);
             }
         });
