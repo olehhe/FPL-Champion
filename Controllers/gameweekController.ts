@@ -1,10 +1,8 @@
-var gameweekController = (Gameweek) => {
+const gameweekController = (Gameweek) => {
 
-    var _allowedQueryParams = [
+    const _allowedQueryParams = [];
 
-    ];
-
-    var get = (req, res) => {
+    const get = (req, res) => {
         var query = { };
         _allowedQueryParams.forEach((p) => {
             if (req.query[p])
@@ -23,7 +21,7 @@ var gameweekController = (Gameweek) => {
         });
     };
 
-    var getByWeekNumber = (req, res) => {
+    const getByWeekNumber = (req, res) => {
         res.json(req.gameweek);
     };
 
@@ -33,4 +31,4 @@ var gameweekController = (Gameweek) => {
     }
 };
 
-module.exports = gameweekController;
+export = gameweekController;

@@ -1,13 +1,13 @@
-var playerController = (Player) => {
+const playerController = (Player) => {
 
-    var _allowedQueryParams = [
+    const _allowedQueryParams = [
         'first_name',
         'last_name',
         'team_code'
     ]
 
-    var get = (req, res) => {
-        var query = { };
+    const get = (req, res) => {
+        let query = { };
         _allowedQueryParams.forEach((p) => {
             if (req.query[p])
                 query[p] = req.query[p];
@@ -25,7 +25,7 @@ var playerController = (Player) => {
         });
     };
 
-    var getWithId = (req, res) => {
+    const getWithId = (req, res) => {
         res.json(req.player);
     };
 
@@ -36,4 +36,4 @@ var playerController = (Player) => {
 
 };
 
-module.exports = playerController;
+export = playerController;

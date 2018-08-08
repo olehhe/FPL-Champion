@@ -1,7 +1,7 @@
-var userController = (User) => {
+const userController = (User) => {
 
-    var get = (req, res) => {
-        var query = { };
+    const get = (req, res) => {
+        const query = { };
 
         User.find(query, (err, users) => {
             if (err) {
@@ -15,8 +15,8 @@ var userController = (User) => {
         });
     };
 
-    var post = (req, res) => {
-        var user = new User(req.body);
+    const post = (req, res) => {
+        const user = new User(req.body);
         if (!req.body.name || !req.body.email) {
             res.status(400);
             res.send('Name and Email is required');
@@ -28,11 +28,11 @@ var userController = (User) => {
         }
     };
 
-    var getWithId = (req, res) => {
+    const getWithId = (req, res) => {
         res.json(req.user);
     };
 
-    var putWithId = (req, res) => {
+    const putWithId = (req, res) => {
         req.user.name = req.body.name;
         req.user.email = req.body.email;
 
@@ -47,7 +47,7 @@ var userController = (User) => {
         });
     };
 
-    var patchWithId = (req, res) => {
+    const patchWithId = (req, res) => {
         if (req.body._id)
             delete req.body._id;
 
@@ -66,7 +66,7 @@ var userController = (User) => {
         });
     };
 
-    var deleteWithId = (req, res) => {
+    const deleteWithId = (req, res) => {
         req.user.remove((err) => {
             if (err) {
                 res.status(500);
@@ -89,4 +89,4 @@ var userController = (User) => {
     }
 };
 
-module.exports = userController;
+export = userController;

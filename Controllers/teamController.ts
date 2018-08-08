@@ -1,12 +1,12 @@
-var teamController = (Team) => {
+const teamController = (Team) => {
 
-    var _allowedQueryParams = [
+    const _allowedQueryParams = [
         'name',
         'short_name'
     ]
 
-    var get = (req, res) => {
-        var query = { };
+    const get = (req, res) => {
+        let query = { };
         _allowedQueryParams.forEach((p) => {
             if (req.query[p]) {
                 query[p] = new RegExp(req.query[p], 'i');
@@ -25,7 +25,7 @@ var teamController = (Team) => {
         });
     };
 
-    var getWithTeamCode = (req, res) => {
+    const getWithTeamCode = (req, res) => {
         res.json(req.team);
     };
 
@@ -36,4 +36,4 @@ var teamController = (Team) => {
 
 };
 
-module.exports = teamController;
+export = teamController;
