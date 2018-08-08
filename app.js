@@ -2,16 +2,21 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
+/* Constants */
+const FALLBACK_PORT = 3000;
+const DB_CONSTRING_TEST = 'mongodb://localhost:27017/fplAPI_test';
+const DB_CONSTRING = 'mongodb://localhost:27017/fplAPI';
+
 /* App */
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || FALLBACK_PORT;
 
 /* DB */
 var db;
 if (process.env.ENV == 'Test')
-    var db = mongoose.connect('mongodb://localhost:27017/fplAPI_test', { useNewUrlParser: true });
+    var db = mongoose.connect(DB_CONSTRING_TEST, { useNewUrlParser: true });
 else
-    var db = mongoose.connect('mongodb://localhost:27017/fplAPI', { useNewUrlParser: true });
+    var db = mongoose.connect(DB_CONSTRING, { useNewUrlParser: true });
 
 /* Parser */
 app.use(bodyParser.urlencoded({extended: false}));
