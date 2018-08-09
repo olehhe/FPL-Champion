@@ -24,7 +24,6 @@ app.use(bodyParser.json());
 
 /* Models */
 var playerModel = require('./Models/playerModel');
-var teamModel = require('./Models/teamModel');
 var gameweekModel = require('./Models/gameweekModel');
 var userModel = require('./Models/userModel');
 
@@ -39,7 +38,7 @@ app.get('/', (req, res) => {
 });
 
 var playerRouter = require('./Routes/playerRoutes')(playerModel);
-var teamRouter = require('./Routes/teamRoutes')(teamModel);
+var teamRouter = require('./Routes/teamRoutes')();
 var gameweekRouter = require('./Routes/gameweekRoutes')(gameweekModel);
 var userRouter = require('./Routes/userRoutes')(userModel);
 

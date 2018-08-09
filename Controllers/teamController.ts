@@ -1,18 +1,20 @@
-const teamController = (Team) => {
+import {Team} from "../Models/teamModel";
 
-    const _allowedQueryParams = [
-        'name',
-        'short_name'
-    ]
+export class teamController {
+    public constructor(){};
 
-    const get = (req, res) => {
+    get = (req, res) => {
+        const _allowedQueryParams = [
+            'name',
+            'short_name'
+        ]
         let query = { };
         _allowedQueryParams.forEach((p) => {
             if (req.query[p]) {
                 query[p] = new RegExp(req.query[p], 'i');
             }
         });
-
+        
         Team.find(query, (err, teams) => {
             if (err) {
                 res.status(500);
@@ -34,15 +36,8 @@ const teamController = (Team) => {
         });
     };
 
-    const getWithTeamCode = (req, res) => {
+    getWithTeamCode = (req, res) => {
+        console.log("getWithTeamCode")
         res.json(req.team);
     };
-
-    return {
-        get: get,
-        getWithTeamCode: getWithTeamCode
-    }
-
 };
-
-export = teamController;

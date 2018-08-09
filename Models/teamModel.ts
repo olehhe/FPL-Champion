@@ -1,8 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
-;
-const teamModelSchema = new mongoose_1.Schema({
+import { Document, Schema, Model, model} from "mongoose";
+import {ITeam} from "../Interfaces/team";
+
+interface ITeamModel extends ITeam{};
+
+const teamModelSchema: Schema = new Schema({
     id: { type: Number },
     current_event_fixture: { type: Array },
     next_event_fixture: { type: Array },
@@ -27,4 +28,5 @@ const teamModelSchema = new mongoose_1.Schema({
     strength_defence_away: { type: Number },
     team_division: { Type: Number }
 });
-exports.Team = mongoose_1.model('team', teamModelSchema);
+
+export const Team = model<ITeamModel>('team', teamModelSchema);

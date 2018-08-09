@@ -1,18 +1,20 @@
-"use strict";
-const express = require("express");
-const teamModel_1 = require("../Models/teamModel");
-const teamController_1 = require("../Controllers/teamController");
+import * as express from "express";
+import {Team} from "../Models/teamModel";
+import {teamController} from "../Controllers/teamController";
 const teamRouter = express.Router();
-const teamCtrl = new teamController_1.teamController();
+const teamCtrl = new teamController();
+
 const routes = () => {
+
+    /* Middleware */
     teamRouter.use('/:teamCode', (req, res, next) => {
-        teamModel_1.Team.findOne({ 'code': req.params.teamCode }, (err, team) => {
+        Team.findOne({ 'code': req.params.teamCode }, (err, team) => {
             if (err) {
                 res.status(500);
                 res.send(err);
             }
             else if (team) {
-                console.log("INSODE Middleware");
+                console.log("INSODE Middleware")
                 req.team = team;
                 next();
             }
@@ -22,10 +24,15 @@ const routes = () => {
             }
         });
     });
+
+    /* Routes */
     teamRouter.route('/')
         .get(teamCtrl.get);
+
     teamRouter.route('/:teamCode')
         .get(teamCtrl.getWithTeamCode);
+
     return teamRouter;
 };
-module.exports = routes;
+
+export = routes;

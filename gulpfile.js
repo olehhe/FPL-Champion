@@ -20,6 +20,9 @@ gulp.task('typescripts', () =>
 
 const ignoreTsGeneratedJsFiles = [
     'Controllers/**.js',
+    'Interfaces/**.js',
+    'Models/teamModel.js',
+    'Routes/teamRoutes.js'
 ];
 
 gulp.task('default',['typescripts'], () => {
