@@ -37,7 +37,19 @@ export class teamController {
     };
 
     getWithTeamCode = (req, res) => {
-        console.log("getWithTeamCode")
-        res.json(req.team);
+        Team.findOne({ 'code': req.params.teamCode }, (err, team) => {
+            if (err) {
+                res.status(500);
+                res.send(err);
+            }
+            else if (team) {
+                res.status(200);
+                res.json(team);
+            }
+            else {
+                res.status(404);
+                res.send('No team found');
+            }
+        });
     };
 };

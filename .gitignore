@@ -1,3 +1,4 @@
 node_modules/
 Controllers/*.js
 Interfaces/team.js
+Routes/teamRoutes.js
