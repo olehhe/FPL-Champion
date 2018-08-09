@@ -1,6 +1,8 @@
 const gameweekController = (Gameweek) => {
 
-    const _allowedQueryParams = [];
+    const _allowedQueryParams = [
+        'finished'
+    ];
 
     const get = (req, res) => {
         var query = { };
@@ -15,14 +17,27 @@ const gameweekController = (Gameweek) => {
                 res.send(err);
             }
             else {
+                let returnGameweeks = [];
+                gameweeks.forEach((item) => {
+                    let gameweek = item.toJSON();
+                    gameweek.links = {};
+                    gameweek.links.self = 'http://' + req.headers.host + '/api/gameweeks/' + encodeURIComponent(gameweek.id);
+
+                    returnGameweeks.push(gameweek);
+                });
+
                 res.status(200);
-                res.json(gameweeks);
+                res.json(returnGameweeks);
             }
         });
     };
 
     const getByWeekNumber = (req, res) => {
-        res.json(req.gameweek);
+        var gameweek = req.gameweek.toJSON();
+        gameweek.links = {};
+        gameweek.links.FilterByFinishedStatus = 'http://' + req.headers.host + '/api/gameweeks/?finished=' + gameweek.finished;
+
+        res.json(gameweek);
     };
 
     return {

@@ -19,8 +19,17 @@ const teamController = (Team) => {
                 res.send(err);
             }
             else {
+                let returnTeams = [];
+                teams.forEach((item) => {
+                    var team = item.toJSON();
+                    team.links = {};
+                    team.links.self = 'http://' + req.headers.host + '/api/teams/' + encodeURIComponent(team.code);
+
+                    returnTeams.push(team);
+                });
+
                 res.status(200);
-                res.json(teams);
+                res.json(returnTeams);
             }
         });
     };
