@@ -24,12 +24,9 @@ const ignoreTsGeneratedJsFiles = [
 
 gulp.task('default',['typescripts'], () => {
     nodemon({
-        script: 'app.js',
+        script: 'index.js',
         ext: 'js ts',
         verbose: true,
-        env: {
-            PORT: 9000
-        },
         ignore: [
             './node_modules/**',
             ignoreTsGeneratedJsFiles
