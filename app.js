@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 
 /* Constants */
 const FALLBACK_PORT = 3000;
@@ -18,7 +19,8 @@ if (process.env.ENV == 'Test')
 else
     var db = mongoose.connect(DB_CONSTRING, { useNewUrlParser: true });
 
-/* Parser */
+/* Global middleware */
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
