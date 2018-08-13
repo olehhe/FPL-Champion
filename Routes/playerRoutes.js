@@ -5,8 +5,8 @@ var routes = (Player) => {
     var playerController = require('../Controllers/playerController')(Player);
 
     /* Middleware */
-    playerRouter.use('/:playerId', (req, res, next) => {
-        Player.findById(req.params.playerId, (err, player) => {
+    playerRouter.param('playerId', (req, res, next, playerId) => {
+        Player.findById(playerId, (err, player) => {
             if (err) {
                 res.status(500);
                 res.send(err);

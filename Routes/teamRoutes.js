@@ -5,8 +5,8 @@ var routes = (Team) => {
     var teamController = require('../Controllers/teamController')(Team);
 
     /* Middleware */
-    teamRouter.use('/:teamCode', (req, res, next) => {
-        Team.findOne({ 'code': req.params.teamCode }, (err, team) => {
+    teamRouter.param('teamCode', (req, res, next, teamCode) => {
+        Team.findOne({ 'code': teamCode }, (err, team) => {
             if (err) {
                 res.status(500);
                 res.send(err);

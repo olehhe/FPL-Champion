@@ -5,8 +5,8 @@ var routes = (Gameweek) => {
     var gameweekController = require('../Controllers/gameweekController')(Gameweek);
 
     /* Middleware */
-    gameweekRouter.use('/:gameweekNumber', (req, res, next) => {
-        Gameweek.findOne({ 'id': req.params.gameweekNumber }, (err, gameweek) => {
+    gameweekRouter.param('gameweekNumber', (req, res, next, gameweekNumber) => {
+        Gameweek.findOne({ 'id': gameweekNumber }, (err, gameweek) => {
             if (err) {
                 res.status(500);
                 res.send(err);

@@ -5,8 +5,8 @@ var routes = (User) => {
     var userController = require('../Controllers/userController')(User);
 
     /* Middlware */
-    userRouter.use('/:userId', (req, res, next) => {
-        User.findById(req.params.userId, (err, user) => {
+    userRouter.param('userId', (req, res, next, userId) => {
+        User.findById(userId, (err, user) => {
             if (err) {
                 res.status(500);
                 res.send(err);
