@@ -53,7 +53,7 @@ app.use('/api/users', userRouter);
 /* Error handler */
 app.use((err, req, res, next) => {
     if (err) {
-        console.err('An error occurred: ' + err);
+        console.err('An error occurred: ' + err.message);
         res.status(500);
         res.send('Oops! Something has gone wrong on our side, how embarassing... We\'ll try and fix it ASAP!');
     }
