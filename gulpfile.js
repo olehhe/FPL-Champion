@@ -20,6 +20,10 @@ gulp.task('typescripts', () =>
 
 const ignoreTsGeneratedJsFiles = [
     'Controllers/**.js',
+    'server/api/fplGameweeks/gameweekController.js',
+    'server/api/fplPlayers/playerController.js',
+    'server/api/fplTeams/teamController.js',
+    'server/api/users/userController.js'
 ];
 
 gulp.task('default',['typescripts'], () => {
