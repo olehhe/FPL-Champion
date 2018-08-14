@@ -1,4 +1,5 @@
 "use strict";
+const logger = require("../../utils/logger");
 const gameweekController = (Gameweek) => {
     const _allowedQueryParams = [
         'finished'
@@ -11,6 +12,7 @@ const gameweekController = (Gameweek) => {
         });
         Gameweek.find(query, (err, gameweeks) => {
             if (err) {
+                logger.log(err);
                 res.status(500);
                 res.send(err);
             }
@@ -22,6 +24,7 @@ const gameweekController = (Gameweek) => {
                     gameweek.links.self = 'http://' + req.headers.host + '/api/gameweeks/' + encodeURIComponent(gameweek.id);
                     returnGameweeks.push(gameweek);
                 });
+                logger.log('Returning data with OK 200');
                 res.status(200);
                 res.json(returnGameweeks);
             }
@@ -31,6 +34,7 @@ const gameweekController = (Gameweek) => {
         var gameweek = req.gameweek.toJSON();
         gameweek.links = {};
         gameweek.links.FilterByFinishedStatus = 'http://' + req.headers.host + '/api/gameweeks/?finished=' + gameweek.finished;
+        logger.log('Returning data with OK 200');
         res.json(gameweek);
     };
     return {

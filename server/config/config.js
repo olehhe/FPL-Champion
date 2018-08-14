@@ -5,7 +5,11 @@ var config = {
     test: 'testing',
     prod: 'production',
     port: process.env.PORT || 3000,
-    logging: false
+    logging: false,
+    db: {
+        DB_CONSTRING_TEST: '',
+        DB_CONSTRING: ''
+    }
 };
 
 // Check if NODE_ENV exists. If not, set to development

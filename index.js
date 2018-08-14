@@ -8,4 +8,4 @@ var app = require('./server');
 var logger = require('./server/utils/logger')
 
 app.listen(config.port);
-logger.log('Listening on port ' + config.port);
+logger.log('Server listening on port ' + config.port);
