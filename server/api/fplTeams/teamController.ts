@@ -1,8 +1,6 @@
-import logger from '../../utils/logger';
+import * as logger from '../../utils/logger';
 
 const teamController = (Team) => {
-
-    logger.log('Hi from teamController');
 
     const _allowedQueryParams = [
         'name',
@@ -19,6 +17,7 @@ const teamController = (Team) => {
 
         Team.find(query, (err, teams) => {
             if (err) {
+                logger.log(err);
                 res.status(500);
                 res.send(err);
             }
@@ -32,9 +31,11 @@ const teamController = (Team) => {
                     returnTeams.push(team);
                 });
 
+                logger.log('Returning data with OK 200');
                 res.status(200);
                 res.json(returnTeams);
             }
+            logger.log('WhAT?');
         });
     };
 

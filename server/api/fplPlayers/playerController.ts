@@ -1,3 +1,5 @@
+import * as logger from '../../utils/logger';
+
 const playerController = (Player) => {
 
     const _allowedQueryParams = [
@@ -15,6 +17,7 @@ const playerController = (Player) => {
 
         Player.find(query, (err, players) => {
             if (err) {
+                logger.log(err);
                 res.status(500);
                 res.send(err);
             }
@@ -28,6 +31,7 @@ const playerController = (Player) => {
                     returnPlayers.push(player);
                 });
 
+                logger.log('Returning data with OK 200');
                 res.status(200);
                 res.json(returnPlayers);
             }
@@ -42,6 +46,7 @@ const playerController = (Player) => {
         player.links.FilterByLastName = endpoint + '?second_name=' + encodeURIComponent(player.second_name);
         player.links.FilterByTeamCode = endpoint + '?team_code=' + encodeURIComponent(player.team_code);
 
+        logger.log('Returning data with OK 200');
         res.json(player);
     };
 

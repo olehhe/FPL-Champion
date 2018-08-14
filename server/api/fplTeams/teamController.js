@@ -1,7 +1,6 @@
 "use strict";
-const logger_1 = require("../../utils/logger");
+const logger = require("../../utils/logger");
 const teamController = (Team) => {
-    logger_1.default.log('Hi from teamController');
     const _allowedQueryParams = [
         'name',
         'short_name'
@@ -15,6 +14,7 @@ const teamController = (Team) => {
         });
         Team.find(query, (err, teams) => {
             if (err) {
+                logger.log(err);
                 res.status(500);
                 res.send(err);
             }
@@ -26,9 +26,11 @@ const teamController = (Team) => {
                     team.links.self = 'http://' + req.headers.host + '/api/teams/' + encodeURIComponent(team.code);
                     returnTeams.push(team);
                 });
+                logger.log('Returning data with OK 200');
                 res.status(200);
                 res.json(returnTeams);
             }
+            logger.log('WhAT?');
         });
     };
     const getWithTeamCode = (req, res) => {

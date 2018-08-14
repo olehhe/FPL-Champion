@@ -1,4 +1,4 @@
-import logger from '../../utils/logger';
+import * as logger from '../../utils/logger';
 
 const gameweekController = (Gameweek) => {
 
@@ -15,6 +15,7 @@ const gameweekController = (Gameweek) => {
 
         Gameweek.find(query, (err, gameweeks) => {
             if (err) {
+                logger.log(err);
                 res.status(500);
                 res.send(err);
             }
@@ -28,6 +29,7 @@ const gameweekController = (Gameweek) => {
                     returnGameweeks.push(gameweek);
                 });
 
+                logger.log('Returning data with OK 200');
                 res.status(200);
                 res.json(returnGameweeks);
             }
@@ -39,6 +41,7 @@ const gameweekController = (Gameweek) => {
         gameweek.links = {};
         gameweek.links.FilterByFinishedStatus = 'http://' + req.headers.host + '/api/gameweeks/?finished=' + gameweek.finished;
 
+        logger.log('Returning data with OK 200');
         res.json(gameweek);
     };
 
