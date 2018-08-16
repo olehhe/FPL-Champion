@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 var gulpMocha = require('gulp-mocha');
-var env = require('gulp-env');
 var supertest = require('supertest');
 var ts = require('gulp-typescript');
 
@@ -42,6 +41,7 @@ gulp.task('default',['typescripts'], () => {
 });
 
 gulp.task('test', () => {
+    var env = require('gulp-env');
     env({
         vars: {
             ENV: 'Test'
