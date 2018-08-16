@@ -108,7 +108,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 :: 4. Run GULP task
 IF EXIST "gulpfile.js" (
   pushd %DEPLOYMENT_TARGET%
-  call .\node_modules\.bin\gulp imagemin
+  call :ExecuteCmd .\node_modules\.bin\gulp imagemin
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
