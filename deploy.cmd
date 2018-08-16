@@ -105,10 +105,10 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   popd
 )
 
-:: 4. Run GULP task
+:: 4. Run GULP task for typescripts
 IF EXIST "gulpfile.js" (
   pushd %DEPLOYMENT_TARGET%
-  call :ExecuteCmd .\node_modules\.bin\gulp
+  call :ExecuteCmd .\node_modules\.bin\gulp typescripts
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
