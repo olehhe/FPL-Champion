@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "main": "./index.js"
+    "start": "node ./bin/www"
   },
   "author": "Ole Henrik Hellenes & Jo Krokengen",
   "license": "ISC",
