@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var api = require('./api');
+var api = require('./api/');
 var err = require('./middleware/err');
 var logger = require('./utils/logger');
 
