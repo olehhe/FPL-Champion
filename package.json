@@ -8,7 +8,7 @@
     "start": "node index.js",
     "main": "./index.js"
   },
-  "author": "Ole Henrik Hellenes",
+  "author": "Ole Henrik Hellenes & Jo Krokengen",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
