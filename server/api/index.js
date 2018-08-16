@@ -17,7 +17,7 @@ var fplTeamsRouter = require('./fplTeams/teamsRoutes');
 var usersRouter = require('./users/usersRoutes');
 
 // Routes
-app.use('/', (req, res) => {
+router.use('/', (req, res) => {
     res.json({
         title: 'FPL Champion API',
         descr: 'Meh',
