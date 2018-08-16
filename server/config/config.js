@@ -8,7 +8,7 @@ var config = {
     logging: false,
     db: {
         DB_CONSTRING_TEST: '',
-        DB_CONSTRING: ''
+        DB_CONSTRING: process.env.DB_CONN || ''
     }
 };
 
