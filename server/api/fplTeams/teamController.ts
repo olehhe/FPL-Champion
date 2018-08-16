@@ -35,7 +35,6 @@ const teamController = (Team) => {
                 res.status(200);
                 res.json(returnTeams);
             }
-            logger.log('WhAT?');
         });
     };
 
