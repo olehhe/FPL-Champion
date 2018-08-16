@@ -7,13 +7,14 @@ var logger = require('./utils/logger');
 // Setup middleware
 require('./middleware/appMiddleware')(app);
 
-app.use('/', (req, res) => {
-    res.json({
-        title: 'FPL Champion',
-        descr: 'Meh',
-        author: 'OHH&JLK'
+app.route('/')
+    .get((req, res) => {
+        res.json({
+            title: 'FPL Champion',
+            descr: 'Meh',
+            author: 'OHH&JLK'
+        });
     });
-});
 
 // Setup API-route
 logger.log('Set API route');

@@ -17,14 +17,6 @@ var fplTeamsRouter = require('./fplTeams/teamsRoutes');
 var usersRouter = require('./users/usersRoutes');
 
 // Routes
-router.use('/', (req, res) => {
-    res.json({
-        title: 'FPL Champion API',
-        descr: 'Meh',
-        author: 'OHH&JLK'
-    });
-});
-
 logger.log('Set api sub-routes');
 router.use('/gameweeks', fplGameweeksRouter);
 router.use('/players', fplPlayersRouter);
